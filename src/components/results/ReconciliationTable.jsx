@@ -6,11 +6,11 @@ export default function ReconciliationTable({ items }) {
   const [expanded, setExpanded] = useState(null)
 
   return (
-    <div className="rounded-xl border border-slate-700 overflow-hidden">
+    <div className="rounded-2xl border border-slate-700/50 overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-slate-800/80 text-slate-400 text-left">
+            <tr className="bg-slate-800/60 text-slate-400 text-left border-b border-slate-700/50">
               <th className="px-4 py-3 font-medium w-8"></th>
               <th className="px-4 py-3 font-medium">#</th>
               <th className="px-4 py-3 font-medium">Requested Change</th>
@@ -24,7 +24,7 @@ export default function ReconciliationTable({ items }) {
               <Fragment key={item.id}>
                 <tr
                   onClick={() => setExpanded(expanded === item.id ? null : item.id)}
-                  className="border-t border-slate-700/50 hover:bg-slate-800/40 cursor-pointer transition-colors"
+                  className="border-t border-slate-700/30 hover:bg-blue-500/5 cursor-pointer transition-all duration-200"
                 >
                   <td className="px-4 py-3 text-slate-500">
                     {expanded === item.id ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
