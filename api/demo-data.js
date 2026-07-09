@@ -1,0 +1,36 @@
+export const demoResult = {
+  summary: {
+    implemented: 3,
+    missing: 1,
+    partial: 1,
+    unauthorized: 1,
+    total_requested: 5,
+    total_diffs: 6,
+  },
+  requested_changes: [
+    { id: 1, description: "Increase bore diameter from 10mm to 12mm", location: "Section A-A", target_value: null, old_value: null, attribute: null, change_type: "general" },
+    { id: 2, description: "Add M6 tapped hole at top-left corner", location: "Top view", target_value: null, old_value: null, attribute: null, change_type: "general" },
+    { id: 3, description: "Update material specification to 6061-T6 Aluminum", location: "Title block", target_value: null, old_value: null, attribute: null, change_type: "general" },
+    { id: 4, description: "Change surface finish from Ra 3.2 to Ra 1.6", location: "General notes", target_value: null, old_value: null, attribute: null, change_type: "general" },
+    { id: 5, description: "Add deburr note: DEBURR ALL EDGES", location: "General notes", target_value: null, old_value: null, attribute: null, change_type: "general" },
+  ],
+  detected_diffs: [
+    { id: "d1", description: "Dimension changed: 10mm → 12mm", location: "Section A-A", change_type: "dimension", page: 1, confidence: 0.92, old_value: null, new_value: null, attribute: null },
+    { id: "d2", description: "Visual change detected (2.3% of page modified)", location: "top-left area", change_type: "visual", page: 1, confidence: 0.78, old_value: null, new_value: null, attribute: null },
+    { id: "d3", description: "Text changed: 'AL 6061' → '6061-T6 ALUMINUM'", location: "Page 1", change_type: "text", page: 1, confidence: 0.88, old_value: null, new_value: null, attribute: null },
+    { id: "d4", description: "Text added: 'DEBURR ALL EDGES'", location: "Page 1", change_type: "text", page: 1, confidence: 0.85, old_value: null, new_value: null, attribute: null },
+    { id: "d5", description: "Visual change detected (1.1% of page modified)", location: "bottom-right area", change_type: "visual", page: 1, confidence: 0.71, old_value: null, new_value: null, attribute: null },
+    { id: "d6", description: "Text changed: 'Rev A' → 'Rev B'", location: "Page 1", change_type: "text", page: 1, confidence: 0.95, old_value: null, new_value: null, attribute: null },
+  ],
+  reconciliation: [
+    { id: 1, request_description: "Increase bore diameter from 10mm to 12mm", status: "implemented", confidence: 0.92, matched_diff: "Dimension changed: 10mm → 12mm", evidence: "Exact dimension match found in Section A-A (score: 92%)", location: "Section A-A", page: 1 },
+    { id: 2, request_description: "Add M6 tapped hole at top-left corner", status: "partial", confidence: 0.58, matched_diff: "Visual change detected (2.3% of page modified)", evidence: "Visual change in top-left area but M6 specification not confirmed in text diff.", location: "Top view", page: 1 },
+    { id: 3, request_description: "Update material specification to 6061-T6 Aluminum", status: "implemented", confidence: 0.88, matched_diff: "Text changed: 'AL 6061' → '6061-T6 ALUMINUM'", evidence: "Material spec updated in title block (score: 88%)", location: "Title block", page: 1 },
+    { id: 4, request_description: "Change surface finish from Ra 3.2 to Ra 1.6", status: "missing", confidence: 0.12, matched_diff: null, evidence: "No matching change found in Rev A → Rev B diff.", location: "General notes", page: 1 },
+    { id: 5, request_description: "Add deburr note: DEBURR ALL EDGES", status: "implemented", confidence: 0.85, matched_diff: "Text added: 'DEBURR ALL EDGES'", evidence: "Deburr note found in general notes (score: 85%)", location: "General notes", page: 1 },
+    { id: 6, request_description: null, status: "unauthorized", confidence: 0.71, matched_diff: "Visual change detected (1.1% of page modified)", evidence: "Unauthorized: change in bottom-right area with no matching request entry.", location: "bottom-right area", page: 1 },
+  ],
+  page_images: [],
+  demo_mode: true,
+  processing_notes: ["Demo mode: showing sample reconciliation results.", "Upload real PDFs to run the live diff engine."],
+};
