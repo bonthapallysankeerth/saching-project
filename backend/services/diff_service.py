@@ -130,6 +130,9 @@ def _classify_value_attr(old_v: str, new_v: str, context: str) -> str:
     except ValueError:
         pass
     return "general"
+
+
+def _diff_aligned_lines(text_a: str, text_b: str) -> list[tuple[str, str, str]]:
     """Compare line-by-line and extract only paired number changes."""
     pairs = []
     lines_a = [l.strip() for l in text_a.splitlines() if l.strip()]
@@ -188,9 +191,6 @@ def _extract_real_dimension_changes(text_a: str, text_b: str) -> list[tuple[str,
         new_v = dims_b.get(attr, "")
         if old_v and new_v:
             _add(old_v, new_v, attr)
-
-    for old_v, new_v, attr in _diff_aligned_lines(text_a, text_b):
-        _add(old_v, new_v, attr)
 
     return pairs
 
